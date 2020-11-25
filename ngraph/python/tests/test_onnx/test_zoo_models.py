@@ -20,7 +20,7 @@ from operator import itemgetter
 from pathlib import Path
 import os
 
-from tests.test_onnx.utils import OpenVinoOnnxBackend
+from tests.test_onnx.utils import OpenVinoTestBackend
 from tests.test_onnx.utils.model_importer import ModelImportRunner
 
 from tests import (

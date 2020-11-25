@@ -136,8 +136,7 @@ class OpenVinoTestBackend(OpenVinoOnnxBackend):
         device="CPU",  # type: Text
         **kwargs  # type: Any
     ):  # type: (...) -> bool
-        # Return whether the model is compatible with the backend.
-        import_onnx_model(model)
+        # Return true whether the model is compatible with the backend.
         return True
 
 
