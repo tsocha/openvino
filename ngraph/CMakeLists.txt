@@ -328,7 +328,9 @@ if (NGRAPH_ONNX_IMPORT_ENABLE)
     endif()
 
     set(BEFORE_ONNX_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS})
-    set(BUILD_SHARED_LIBS OFF)
+    
+    set(NGRAPH_TARGETS_FILE "${CMAKE_CURRENT_BINARY_DIR}/ngraphTargets.cmake")
+    set(BUILD_SHARED_LIBS ON)
     if (NOT NGRAPH_USE_SYSTEM_PROTOBUF)
         include(cmake/external_protobuf.cmake)
     else()
