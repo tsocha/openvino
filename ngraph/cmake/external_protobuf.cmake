@@ -97,7 +97,7 @@ else()
             SOURCE_DIR "${EXTERNAL_PROJECTS_ROOT}/protobuf/src"
             BINARY_DIR "${EXTERNAL_PROJECTS_ROOT}/protobuf/src"
             INSTALL_DIR "${EXTERNAL_PROJECTS_ROOT}/protobuf"
-            EXCLUDE_FROM_ALL TRUE
+            EXCLUDE_FROM_ALL FALSE
             BUILD_BYPRODUCTS ${Protobuf_PROTOC_EXECUTABLE} ${Protobuf_LIBRARY}
         )
 
@@ -137,7 +137,7 @@ else()
                 FetchContent_Populate(ext_protobuf)
                 set(protobuf_BUILD_TESTS OFF CACHE BOOL "Build tests")
                 set(protobuf_WITH_ZLIB OFF CACHE BOOL "Build with zlib support")
-                add_subdirectory(${ext_protobuf_SOURCE_DIR}/cmake ${ext_protobuf_BINARY_DIR} EXCLUDE_FROM_ALL)
+                add_subdirectory(${ext_protobuf_SOURCE_DIR}/cmake ${ext_protobuf_BINARY_DIR})
             endif()
         else()
             message(FATAL_ERROR "Minimum supported version of protobuf library is 3.0.0")
@@ -161,6 +161,13 @@ else()
                                    CXX_VISIBILITY_PRESET default
                                    C_VISIBILITY_PRESET default
                                    VISIBILITY_INLINES_HIDDEN OFF)
+            
+            # install(TARGETS ${Protobuf_LIBRARIES} EXPORT ngraphTargets
+            # RUNTIME DESTINATION ${NGRAPH_INSTALL_LIB} COMPONENT ngraph
+            # ARCHIVE DESTINATION ${NGRAPH_INSTALL_LIB} COMPONENT ngraph
+            # LIBRARY DESTINATION ${NGRAPH_INSTALL_LIB} COMPONENT ngraph)
+
+            # openvino_developer_export_targets(COMPONENT protobuf TARGETS ${Protobuf_LIBRARIES})
         endif()
     endif()
 endif()

@@ -51,6 +51,11 @@ macro(onnx_set_target_properties)
     C_VISIBILITY_PRESET default
     VISIBILITY_INLINES_HIDDEN OFF)
 
+    install(TARGETS onnx onnx_proto EXPORT ngraphTargets
+        RUNTIME DESTINATION ${NGRAPH_INSTALL_LIB} COMPONENT ngraph
+        ARCHIVE DESTINATION ${NGRAPH_INSTALL_LIB} COMPONENT ngraph
+        LIBRARY DESTINATION ${NGRAPH_INSTALL_LIB} COMPONENT ngraph)
+
     openvino_developer_export_targets(COMPONENT ngraph TARGETS onnx onnx_proto)
 endmacro()
 
